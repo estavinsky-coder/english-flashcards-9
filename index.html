@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6d4aff">
+<title>כרטיסיות אנגלית כיתה ט׳</title>
+<style>
+:root{
+  --bg:#f6f4ff; --card:#ffffff; --text:#1d1b2e; --muted:#6b6880; --line:#e3dff5;
+  --brand:#6d4aff; --brand-ink:#ffffff; --good:#15803d; --good-bg:#dcfce7;
+  --bad:#b91c1c; --bad-bg:#fee2e2; --tip:#fff4c2; --tip-line:#eed46a; --mark:#ffe58a;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14131c; --card:#1f1d2b; --text:#f1effa; --muted:#a6a2c0; --line:#33304a;
+    --brand:#9a85ff; --brand-ink:#14101f; --good:#86efac; --good-bg:#14331f;
+    --bad:#fca5a5; --bad-bg:#3b1717; --tip:#3a3316; --tip-line:#7a6a22; --mark:#6b5a10;
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  font-size:17px; line-height:1.5;
+  padding:env(safe-area-inset-top) 16px calc(24px + env(safe-area-inset-bottom));
+}
+#app{max-width:520px;margin:0 auto;padding-top:14px}
+.en{direction:ltr;unicode-bidi:isolate;display:inline-block}
+button{font:inherit;color:inherit;cursor:pointer;border:0}
+button:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+h1{font-size:26px;margin:4px 0 2px}
+h2{font-size:19px;margin:22px 0 10px}
+p{margin:6px 0}
+small,.muted{color:var(--muted)}
+
+.hero{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}
+.bar{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:12px 0 4px}
+.bar i{display:block;height:100%;background:var(--brand);border-radius:99px;transition:width .4s}
+.big{display:block;width:100%;min-height:58px;border-radius:16px;font-size:19px;font-weight:700;
+  background:var(--brand);color:var(--brand-ink);margin-top:12px}
+.big.alt{background:transparent;color:var(--brand);border:2px solid var(--brand)}
+.ghost{background:transparent;color:var(--muted);text-decoration:underline;margin:22px auto 0;display:block;padding:12px}
+
+details.tab{background:transparent;border:0;padding:0;margin-top:14px}
+details.tab>summary{list-style:none;display:flex;align-items:center;gap:8px;min-height:58px;
+  background:var(--card);border:2px solid var(--brand);border-radius:16px;padding:10px 16px;font-size:19px}
+details.tab>summary::-webkit-details-marker{display:none}
+details.tab>summary small{font-weight:400;font-size:14px}
+details.tab[open]>summary small{display:none}
+.chev{font-style:normal;margin-inline-start:auto;transition:transform .25s}
+details.tab[open] .chev{transform:rotate(180deg)}
+details.tab[open] .tips{margin-top:8px;animation:pop .25s ease-out}
+.tips{display:grid;gap:8px}
+.tipc{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+  border-inline-start:5px solid var(--brand);border-radius:14px;padding:10px 12px}
+.tipc>span{font-size:28px;line-height:1}
+.tipc b{display:block}
+.tipc .en b{display:inline}
+.tipc b.in{color:var(--brand);text-decoration:underline}
+.pairs{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:4px}
+.pairs li{display:flex;justify-content:space-between;align-items:center;background:var(--bg);
+  border-radius:10px;padding:4px 12px;font-size:18px;max-width:220px}
+.pairs li .en{font-weight:700}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--card);border:1px solid var(--line);
+  border-radius:18px;padding:6px;margin-bottom:12px}
+.seg button{min-height:54px;border-radius:14px;font-size:19px;font-weight:700;background:transparent;color:var(--muted)}
+.seg button.on{background:var(--brand);color:var(--brand-ink)}
+.panel[hidden]{display:none}
+.panel{animation:pop .2s ease-out}
+.tile{position:relative}
+.tile.is-next{border-width:2px;border-color:var(--c);border-top-width:6px}
+.badge{position:absolute;top:8px;left:8px;font-size:12px;font-weight:700;background:var(--bg);
+  border:1px solid var(--line);border-radius:99px;padding:2px 8px}
+.badge.next{background:var(--c);color:#fff;border-color:transparent}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--c);border-radius:16px;
+  padding:12px;text-align:start;min-height:104px}
+.tile .e{font-size:30px;line-height:1}
+.tile b{display:block;margin-top:6px}
+.tile small{display:block}
+.tile .sample{display:block;font-size:13px;color:var(--muted);margin:2px 0 4px;text-align:left}
+.mini{height:6px;background:var(--line);border-radius:9px;margin-top:6px;overflow:hidden}
+.mini i{display:block;height:100%;background:var(--c)}
+
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:10px}
+summary{font-weight:700;cursor:pointer}
+details ul{margin:8px 0 2px;padding-inline-start:20px}
+details li{margin:6px 0}
+
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.icon{width:44px;height:44px;border-radius:12px;background:var(--card);border:1px solid var(--line);font-size:18px}
+.dots{display:flex;gap:6px;flex:1;justify-content:center;flex-wrap:wrap}
+.dots i{width:14px;height:14px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--c,var(--brand))}
+.gname{font-size:14px;color:var(--muted);white-space:nowrap}
+
+.card{background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:22px;
+  padding:20px 18px;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:10px;animation:pop .25s ease-out;cursor:pointer}
+@keyframes pop{from{transform:scale(.96);opacity:.5}to{transform:none;opacity:1}}
+.card .emo{font-size:64px;line-height:1}
+.card .big-en{font-size:40px;font-weight:800}
+.card .med-en{font-size:20px;font-weight:700;color:var(--muted)}
+.card .he{font-size:32px;font-weight:800}
+.hint{color:var(--muted);font-size:15px}
+.speak{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:10px 16px;font-size:16px;min-height:44px}
+.tipbox{background:var(--tip);border:1px solid var(--tip-line);border-radius:14px;padding:12px 14px;
+  text-align:start;font-size:18px;width:100%}
+.tipbox .tl{font-weight:700;margin-bottom:4px}
+.tipbox div+div{margin-top:2px}
+.tipbox bdi,.opt bdi{font-weight:700}
+.ex{display:flex;gap:8px;align-items:center;justify-content:center;font-size:16px;color:var(--muted)}
+mark{background:var(--mark);color:inherit;padding:0 3px;border-radius:4px}
+
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.actions button{min-height:60px;border-radius:16px;font-size:19px;font-weight:700}
+.again{background:var(--bad-bg);color:var(--bad)}
+.knew{background:var(--good-bg);color:var(--good)}
+.actions button:disabled{opacity:.35;cursor:not-allowed}
+
+.center{text-align:center}
+.stars{font-size:48px;letter-spacing:6px;margin:6px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0}
+.chips span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:4px 12px;font-size:15px}
+.timer{font-size:56px;font-weight:800;font-variant-numeric:tabular-nums}
+
+.q{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;text-align:center}
+.opts{display:grid;gap:10px;margin-top:14px}
+.opt{min-height:58px;border-radius:14px;background:var(--card);border:2px solid var(--line);font-size:18px;padding:8px 12px}
+.opt.right{background:var(--good-bg);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:var(--bad-bg);border-color:var(--bad);color:var(--bad);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(6px)}75%{transform:translateX(-6px)}}
+.fb{margin-top:12px}
+
+.confetti{position:fixed;top:-30px;font-size:26px;pointer-events:none;animation:fall 2.2s linear forwards;z-index:9}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:.8}}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div id="app"><main id="view"></main></div>
+
+<script>
+/* ---------- DATA ---------- */
+// Text rules: one short idea per line (\n). English words are auto-isolated by bidi(), so
+// avoid arrows next to English; use "=" or a new line instead.
+const GROUPS = [
+  {id:'reflex', emoji:'🪞', name:'עצמי / עצמך', color:'#8b5cf6',
+   tip:'אדם אחד: self\nכמה אנשים: selves\nכמו knife / knives 🔪\n⚠️ himself, לא hisself\n⚠️ themselves, לא theirselves'},
+  {id:'time', emoji:'⏰', name:'זמן', color:'#0ea5e9',
+   tip:'סדר הזמן:\n1. at first = בהתחלה\n2. at present = עכשיו\n3. afterwards = אחר כך'},
+  {id:'verbs', emoji:'🏃', name:'פעלים וצירופים', color:'#f97316',
+   tip:'המילה הקטנה משנה הכול:\nup = למעלה ⬆️\nout = החוצה 🚪\noff = כבוי / הצידה\non = דלוק / על'},
+  {id:'feel', emoji:'💬', name:'דיבור ורגשות', color:'#ec4899',
+   tip:'מילים על איך מדברים ואיך מרגישים.\nלכל מילה, תחשבו על משהו שקרה לכם.'},
+  {id:'food', emoji:'🍕', name:'אוכל ובית', color:'#22c55e',
+   tip:'מילים שרואים על השולחן.\nנסו למצוא כל אחת בבית!'},
+  {id:'things', emoji:'🌍', name:'מקומות וחפצים', color:'#14b8a6',
+   tip:'הרבה מילים כאן דומות לעברית:\nalbum, map, piano\nמתחילים מהקלות 😉'},
+  {id:'general', emoji:'💡', name:'מילים כלליות', color:'#eab308',
+   tip:'מילים שמופיעות הרבה במבחן.\nלכל אחת יש טריק של צליל או תמונה.'},
+  {id:'phrases', emoji:'🧩', name:'ביטויים ומילות קישור', color:'#64748b',
+   tip:'אחרי What about בא ing:\nWhat about going?\nאחרי Why not בא פועל רגיל:\nWhy not go?'}
+];
+
+// [group, english, emoji, hebrew, example ({{word}} = highlighted), memory trick (lines split by \n)]
+const W = [
+ // reflex
+ ['reflex','myself','🙋','אני עצמי / את עצמי','I made this cake {{myself}}.','my + self\nmy = שלי, self = עצמי'],
+ ['reflex','yourself','🫵','אתה / את עצמך (אדם אחד)','You can teach {{yourself}} to cook.','your + self\nאדם אחד ☝️'],
+ ['reflex','himself','👦','הוא עצמו','He hurt {{himself}} playing football.','him + self\n⚠️ לא hisself!'],
+ ['reflex','herself','👧','היא עצמה','She looked at {{herself}} in the mirror.','her + self\nילדה מסתכלת במראה 🪞'],
+ ['reflex','itself','🐱','הוא / היא עצמו (חיה או דבר)','The cat washed {{itself}}.','it + self\nהחתול מנקה את עצמו 🐱'],
+ ['reflex','ourselves','👫','אנחנו עצמנו','We enjoyed {{ourselves}} at the party.','our + selves\nכמה אנשים = selves'],
+ ['reflex','yourselves','👥','אתם / אתן עצמכם (כמה אנשים)','Behave {{yourselves}}, kids!','your + selves\nyourself = אדם אחד\nyourselves = כמה אנשים'],
+ ['reflex','themselves','🧑‍🤝‍🧑','הם / הן עצמם','They built the house {{themselves}}.','them + selves\n⚠️ לא theirselves!'],
+ ['reflex','each other','🤝','זה את זה','Max and Natalie know {{each other}} from school.','each = כל אחד, other = השני\nכל אחד מסתכל על השני 👀\nthemselves = כל אחד את עצמו\neach other = אחד את השני'],
+ // time
+ ['time','afterwards','⏭️','אחר כך, לאחר מכן','We ate dinner. {{Afterwards}}, we watched a film.','after + wards\nafter = אחרי'],
+ ['time','at first','🌱','בהתחלה','{{At first}} I didn\'t like the music.','first = ראשון\nבדרך כלל אחריה בא but'],
+ ['time','at present','🎁','כרגע, בימים אלה','My brother is at school {{at present}}.','present = מתנה 🎁, וגם עכשיו\nההווה הוא מתנה!'],
+ ['time','on time','⏱️','בזמן (לא מאחר)','Please come {{on time}} tomorrow.','on = דלוק 💡\nהשעון דלוק בדיוק על השעה\n⚠️ in time = ממש לפני שמאוחר מדי'],
+ ['time','bedtime','🛏️','שעת השינה','My {{bedtime}} is ten o\'clock.','bed = מיטה\ntime = זמן'],
+ ['time','awake','👀','ער (לא ישן)','I was {{awake}} all night.','wake up = להתעורר\nawake = כבר התעוררתי 👀'],
+ ['time','arrival','🛬','הגעה','The {{arrival}} of the train is at six.','arrive = להגיע\nנשמע כמו "אריה-בא" 🦁\nהאריה הגיע!'],
+ // verbs
+ ['verbs','accompany','🚶','ללוות, ללכת / לבוא עם','I will {{accompany}} you to the station.','בפנים מסתתרת company = חברה\nמי שמלווה אותך = חברה בדרך 👭'],
+ ['verbs','be off to','🏃','לצאת אל …','I\'m {{off to}} school now.','off = כבוי\nמכבים את האור ויוצאים 🚪'],
+ ['verbs','be used to','🔁','להיות רגיל ל… (אחריו ing)','I\'m {{used to}} getting up early.','used = משומש\nהשתמשתי בזה הרבה, אז התרגלתי\n⚠️ אחריו בא ing: used to getting up'],
+ ['verbs','can afford','💰','יכול להרשות לעצמו (כסף)','We can\'t {{afford}} a new car.','בסוף המילה יש ford\nהאם אני יכול להרשות לעצמי פורד? 🚗'],
+ ['verbs','carry on','➡️','להמשיך','{{Carry on}} working, please.','carry = לסחוב, on = הלאה\nסוחבים את התיק וממשיכים 🎒'],
+ ['verbs','depends on','⚖️','תלוי ב…','It {{depends on}} the weather.','בפנים יש pend = תלוי\npendant = תליון 📿'],
+ ['verbs','drive','🚗','לנהוג','My dad can {{drive}} a bus.','נשמע קצת כמו "דרך"\nנוהגים על הדרך 🚗\ndrive, drove, driven'],
+ ['verbs','expect','📦','לצפות, לצפות ש…','I {{expect}} he will be late.','נשמע כמו express 📦\nמחכים למשלוח, מצפים שיגיע'],
+ ['verbs','give back','↩️','להחזיר','Please {{give back}} my pen.','give = לתת, back = אחורה\nנותנים חזרה ↩️'],
+ ['verbs','make sure (that)','✅','לוודא ש…','Can you {{make sure}} that the window is closed?','make = לעשות, sure = בטוח\nלעשות שיהיה בטוח ✅'],
+ ['verbs','manage','👔','להצליח (למרות קושי); לנהל','I {{managed}} to finish the test on time.','manager = מנהל 👔\nmanaged to = הצלחתי, גם אם היה קשה'],
+ ['verbs','pick up','🧲','להרים; לאסוף (מישהו)','Dad will {{pick}} me {{up}} at five.','pick = לקטוף, up = למעלה\nקוטפים תפוח ומרימים 🍎\nגם: אוספים מישהו באוטו 🚗'],
+ ['verbs','put off','⏳','לדחות','Don\'t {{put off}} your homework!','put = לשים, off = הצידה\nשמים בצד למחר ⏳'],
+ ['verbs','seem','👁️','נראה ש…, נדמה','You {{seem}} tired today.','נשמע כמו see = לראות 👁️\nמה שאני רואה = מה שנראה לי'],
+ ['verbs','take out','🥡','להוציא','Please {{take out}} the trash.','take = לקחת, out = החוצה\nכמו אוכל טייק-אווי 🥡'],
+ ['verbs','try on','👗','למדוד (בגד)','Can I {{try on}} these jeans?','try = לנסות, on = על הגוף\nמנסים בגד על עצמך 👖'],
+ ['verbs','watch out','⚠️','היזהר!','{{Watch out}}! There\'s a car!','watch = להסתכל, out = החוצה\nעיניים על הכביש! 👀🚗'],
+ // feel
+ ['feel','announce','📢','להכריז, להודיע','The teacher will {{announce}} the results.','הודעה ברמקול מתחילה ב"אנא, שימו לב" 📢\nan-nounce מתחיל כמו "אנא"\nannouncement = הודעה'],
+ ['feel','apology','🙏','התנצלות','I owe you an {{apology}}.','בפנים יש polo 👕\nשפכתי מיץ על חולצת פולו, אז מתנצלים\napologize = להתנצל'],
+ ['feel','comment','💬','הערה, תגובה','She made a {{comment}} about my shirt.','כמו תגובה ביוטיוב או באינסטגרם 💬'],
+ ['feel','insult','🧂','עלבון; להעליב','That was an {{insult}}!','נשמע כמו in salt 🧂\nמלח על הפצע = עלבון'],
+ ['feel','joke','😂','בדיחה','He told a funny {{joke}}.','נשמע כמו ג׳וק 🪳\nבדיחה על ג׳וק'],
+ ['feel','upset','😢','נסער, עצוב ומוטרד','Why are you {{upset}}?','up = למעלה, set = סט\nכל הסט התהפך 🫠\nהלב התהפך = נסער'],
+ ['feel','calm','😌','רגוע; להרגיע','Stay {{calm}} during the test.','ה-L שקטה, קוראים "קאם" 🤫\nמי שרגוע שותק'],
+ ['feel','silly','🤪','טיפשי, מצחיק-טיפשי','Funny movies are often {{silly}}.','Silly Billy 🤪\nמישהו שעושה פרצופים מצחיקים'],
+ ['feel','attitude','😎','יחס, גישה','She has a positive {{attitude}}.','altitude = גובה ✈️\nattitude = גישה 😎\nהגישה קובעת את הגובה'],
+ ['feel','character','🎭','אופי; דמות','He has a strong {{character}}.','בפנים יש act 🎭\nשחקן מגלם דמות'],
+ ['feel','friendship','🚢','ידידות, חברות','Our {{friendship}} is very important to me.','friend = חבר, ship = ספינה\nספינה מלאה חברים 🚢'],
+ ['feel','care','❤️','אכפתיות; טיפול; לדאוג','Babies need love and {{care}}.','נשמע כמו "קר" 🧊\nמי שאכפת לו לא משאיר אותך בקור ❤️\ncare about = אכפת לי מ…'],
+ // food
+ ['food','barbecue','🍖','ברביקיו, על האש','We had a {{barbecue}} in the park.','כמעט כמו בעברית: ברביקיו 🍖'],
+ ['food','bowl','🥣','קערה','Why are there {{bowls}} on the table?','האות O באמצע נראית כמו קערה 🥣'],
+ ['food','café','☕','בית קפה','The {{café}} was nice.','café = קפה ☕\nשימו לב לסימן מעל ה-e'],
+ ['food','pepper','🌶️','פלפל','Add some {{pepper}} to the soup.','"פֶּפֶּר" נשמע כמו "פלפל" 🌶️'],
+ ['food','slice','🍕','פרוסה','Can I have a {{slice}} of pizza?','a slice of pizza 🍕\nפרוסת פיצה'],
+ ['food','dirty','🧦','מלוכלך','Is your room {{dirty}}?','dirt = לכלוך\ndirty = מלוכלך 🧦'],
+ // things
+ ['things','abroad','✈️','בחו״ל / לחו״ל','She studied {{abroad}} for a year.','בפנים יש broad = רחב\nהעולם הרחב = חו״ל 🌍\n⚠️ go abroad, בלי to'],
+ ['things','album','📸','אלבום','This {{album}} has lots of old photos.','בדיוק כמו בעברית: אלבום 📸'],
+ ['things','around','🔄','מסביב; בסביבה; בערך','Do you live {{around}} here?','בפנים יש round = עגול\nעגול = מסביב 🔄'],
+ ['things','drum','🥁','תוף','He plays the {{drum}} in a band.','"דרוּם-דרוּם!" 🥁\nזה הצליל של התוף'],
+ ['things','gas','⛽','דלק (באמריקה); גז','We stopped to buy {{gas}}.','gas station = תחנת דלק ⛽\nבאוטו "נותנים גז"'],
+ ['things','map','🗺️','מפה','Look at the {{map}}.','map נשמע כמו "מפה" 🗺️'],
+ ['things','passenger','🚌','נוסע, נוסעת','Every {{passenger}} needs a ticket.','בפנים יש pass = לעבור\nנוסע עובר ממקום למקום 🚌'],
+ ['things','piano','🎹','פסנתר','She plays the {{piano}} very well.','בדיוק כמו בעברית: פיאנו 🎹'],
+ ['things','rock','🎸','סלע; מוזיקת רוק','Do you like {{rock}} music?','שני דברים חזקים:\nסלע 🪨 ומוזיקת רוק 🎸'],
+ ['things','shopping mall','🏬','קניון','When are you going to the {{shopping mall}}?','shopping = קניות\nmall נשמע כמו "מול"\nקניון = מול כל החנויות 🏬'],
+ ['things','spot','📍','מקום; כתם; להבחין','This is a nice {{spot}} for a picnic.','ספוט = פנס שמאיר נקודה אחת 💡\nspot = מקום מסוים'],
+ // general
+ ['general','attention','🫡','תשומת לב','Pay {{attention}} to the teacher.','בצבא: Attention! = דום! 🫡\nכולם מקשיבים'],
+ ['general','audience','👏','קהל','The {{audience}} clapped loudly.','בפנים יש audio = שמע 👂\nהקהל הוא מי ששומע'],
+ ['general','circumstances','⭕','נסיבות','Under these {{circumstances}}, I can\'t go.','circle = מעגל, stand = לעמוד\nמה שעומד מסביבך = נסיבות ⭕'],
+ ['general','exact','🎯','מדויק','What is the {{exact}} time?','X מסמן בדיוק את המקום ❌\nexact = מדויק 🎯'],
+ ['general','experience','🧪','ניסיון, חוויה','She has a lot of {{experience}}.','experiment = ניסוי 🧪\nexperience = ניסיון'],
+ ['general','fashion','👗','אופנה','{{Fashion}} keeps changing all the time.','Fashion TV 📺\nערוץ האופנה'],
+ ['general','free','🍎','חופשי; בחינם','The museum is {{free}} today.','free נשמע כמו "פרי" 🍎\nפרי בחינם!'],
+ ['general','idea','💡','רעיון','That\'s a good {{idea}}!','כמו בעברית: אידיאה 💡'],
+ ['general','point','☝️','נקודה; עניין; להצביע','That\'s a good {{point}}.','PowerPoint 🖥️\npoint = נקודה, וגם להצביע ☝️'],
+ ['general','purpose','🦋','מטרה, תכלית','What is the {{purpose}} of this lesson?','נשמע קצת כמו "פרפר" 🦋\nפרפר טס בכוונה לפרח, יש לו מטרה\non purpose = בכוונה'],
+ ['general','standard','📏','תקן, רמה','This school has a high {{standard}}.','כמו בעברית: סטנדרט 📏'],
+ // phrases
+ ['phrases','by','👋','ליד; על ידי; עד (זמן)','Please finish it {{by}} Friday.','3 משמעויות:\nby the door = ליד הדלת\nby Dan = על ידי דן\nby Friday = עד יום שישי'],
+ ['phrases','really','✔️','באמת, ממש','It\'s {{really}} hot today.','real = אמיתי\nreally = באמת ✔️'],
+ ['phrases','reasonable','⚖️','סביר, הגיוני','That price is {{reasonable}}.','reason = סיבה, able = אפשר\nיש לזה סיבה טובה = הגיוני'],
+ ['phrases','surprising','😲','מפתיע','The news was {{surprising}}.','surprising = הדבר מפתיע 😲\nsurprised = אני מופתע'],
+ ['phrases','(in) comparison','⚖️','בהשוואה (ל…)','{{In comparison}} with Tel Aviv, Haifa is small.','compare = להשוות ⚖️\nin comparison with = בהשוואה ל…'],
+ ['phrases','there\'s no doubt','🤫','אין ספק','{{There\'s no doubt}} that cats are bigger than dogs.','ה-B שקטה, קוראים "דאוט" 🤫\nהספק נעלם!'],
+ ['phrases','to be honest','🙌','למען האמת','{{To be honest}}, I didn\'t like the film.','ה-H שקטה, קוראים "אונסט"\nאין מה להסתיר 🙌'],
+ ['phrases','What about …?','🤔','מה בקשר ל…? מה דעתך על…?','{{What about}} going to the mall?','משמש להצעה 🤔\nאחריו בא ing:\nWhat about going?'],
+ ['phrases','Why not …?','🤷','למה שלא…? (הצעה)','{{Why not}} ask the teacher?','משמש להצעה 🤷\nאחריו בא פועל רגיל:\nWhy not go?']
+];
+
+/* ---------- STORAGE (safe if blocked) ---------- */
+const KEY = 'ek9_known_v1';
+function loadKnown(){ try { return new Set(JSON.parse(localStorage.getItem(KEY) || '[]')); } catch(e){ return new Set(); } }
+function saveKnown(){ try { localStorage.setItem(KEY, JSON.stringify([...known])); } catch(e){} }
+let known = loadKnown();
+
+/* ---------- HELPERS ---------- */
+const ROUND = 7;
+const view = document.getElementById('view');
+const G = Object.fromEntries(GROUPS.map(g => [g.id, g]));
+let S = null;       // study round state
+let Q = null;       // quiz state
+let breakTimer = null;
+let tab = 'learn';  // home screen tab: 'learn' | 'practice'
+
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const hl = s => esc(s).replace(/\{\{(.+?)\}\}/g, '<mark>$1</mark>');
+const plain = s => s.replace(/\{\{|\}\}/g, '');
+const speakable = s => plain(s).replace(/[()…]/g, '').replace(/\s+/g, ' ').trim();
+const en = (s, cls='') => `<span class="en ${cls}" dir="ltr">${esc(s)}</span>`;
+// Wrap each English run in <bdi dir="ltr"> so mixed Hebrew/English text keeps its word order.
+const LAT = /[A-Za-z][A-Za-z0-9'’+\/.,…?! -]*[A-Za-z0-9?!…]|[A-Za-z]/g;
+function bidi(s){
+  let out = '', last = 0;
+  s.replace(LAT, (m, i) => { out += esc(s.slice(last, i)) + `<bdi dir="ltr">${esc(m)}</bdi>`; last = i + m.length; return m; });
+  return out + esc(s.slice(last));
+}
+const lines = s => s.split('\n').map(l => `<div>${bidi(l)}</div>`).join('');
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function speak(t){
+  try { const u = new SpeechSynthesisUtterance(t); u.lang='en-US'; u.rate=.85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch(e){}
+}
+function confetti(){
+  const e = ['🎉','⭐','✨','🎊','💜','🌟'];
+  for(let i=0;i<24;i++){
+    const s = document.createElement('span');
+    s.className = 'confetti'; s.textContent = e[i % e.length];
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.animationDelay = Math.random()*.6 + 's';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 3200);
+  }
+}
+const groupWords = id => W.filter(w => w[0] === id);
+const unknownIn = id => groupWords(id).filter(w => !known.has(w[1]));
+function render(html){
+  if (breakTimer){ clearInterval(breakTimer); breakTimer = null; }
+  view.innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+/* ---------- SCREENS ---------- */
+function home(){
+  S = null; Q = null;
+  const total = W.length, got = W.filter(w => known.has(w[1])).length;
+  const pct = Math.round(got / total * 100);
+  const next = (GROUPS.find(g => unknownIn(g.id).length) || {}).id;
+  const tiles = GROUPS.map(g => {
+    const all = groupWords(g.id).length, k = all - unknownIn(g.id).length;
+    const sample = groupWords(g.id).slice(0, 3).map(w => w[1]).join(', ');
+    const badge = k === all ? '<span class="badge">✅ סיימתי</span>' : g.id === next ? '<span class="badge next">👈 הבא בתור</span>' : '';
+    return `<button class="tile ${g.id === next ? 'is-next' : ''}" data-act="group" data-id="${g.id}" style="--c:${g.color}">
+      ${badge}<span class="e">${g.emoji}</span><b>${esc(g.name)}</b>
+      <span class="sample en" dir="ltr">${esc(sample)}…</span>
+      <small>ידעתי ${k} מתוך ${all}</small><div class="mini"><i style="width:${k/all*100}%"></i></div></button>`;
+  }).join('');
+  render(`
+    <section class="hero center">
+      <h1>אנגלית כיתה ט׳ 🎯</h1>
+      <div class="bar"><i style="width:${pct}%"></i></div>
+      <small>ידעתי ${got} מתוך ${total} מילים</small>
+    </section>
+
+    <details class="tab"><summary>🏆 טיפים להצלחה <small>(הקישו לפתוח)</small><i class="chev">▾</i></summary>
+    <div class="tips">
+      <div class="tipc"><span>⏱️</span><div><b>קצר ומנצח</b>סבב אחד = 3–5 דקות. אחריו הפסקה קטנה.</div></div>
+      <div class="tipc"><span>📵</span><div><b>שקט מסביב</b>טלפון על "נא לא להפריע", שולחן נקי.</div></div>
+      <div class="tipc"><span>🤔</span><div><b>קודם לנחש</b>רק אחר כך הופכים את הכרטיס. הניחוש מחזק זיכרון.</div></div>
+      <div class="tipc"><span>🔊</span><div><b>אומרים בקול</b>הקישו 🔊, חזרו אחריו בקול רם.</div></div>
+      <div class="tipc"><span>🔁</span><div><b>טעות זה טוב</b>כרטיס שלא ידעתם חוזר אחרי שתי מילים. זה בכוונה!</div></div>
+      <div class="tipc"><span>💧</span><div><b>בהפסקה</b>קמים, מתמתחים, שותים מים.</div></div>
+      <div class="tipc"><span>📅</span><div><b>קצת כל יום</b>10 דקות ביום מנצחות שעה בלילה האחרון.</div></div>
+    </div></details>
+
+    <details class="tab"><summary>🧠 איך זוכרים מילה? <small>(הקישו לפתוח)</small><i class="chev">▾</i></summary>
+    <div class="tips">
+      <div class="tipc"><span>👂</span><div><b>צליל דומה</b>מילה באנגלית שנשמעת כמו מילה בעברית:
+        <ul class="pairs">
+          <li><span class="en" dir="ltr">free</span><span>פרי 🍎</span></li>
+          <li><span class="en" dir="ltr">joke</span><span>ג׳וק 🪳</span></li>
+          <li><span class="en" dir="ltr">pepper</span><span>פלפל 🌶️</span></li>
+        </ul></div></div>
+      <div class="tipc"><span>🤪</span><div><b>תמונה מצחיקה</b>ככל שהתמונה מוזרה יותר, זוכרים אותה יותר.</div></div>
+      <div class="tipc"><span>🔍</span><div><b>מילה בתוך מילה</b>מחפשים מילה מוכרת שמסתתרת בפנים:
+        <ul class="pairs">
+          <li><span class="en" dir="ltr">ac<b class="in">company</b></span><span>חברה</span></li>
+          <li><span class="en" dir="ltr">a<b class="in">broad</b></span><span>רחב</span></li>
+          <li><span class="en" dir="ltr">friend<b class="in">ship</b></span><span>ספינה</span></li>
+        </ul></div></div>
+      <div class="tipc"><span>🤫</span><div><b>אותיות שקטות</b>כותבים אותן, אבל לא אומרים:
+        <ul class="pairs">
+          <li><span class="en" dir="ltr">ca<b class="in">l</b>m</span><span>"קאם"</span></li>
+          <li><span class="en" dir="ltr">dou<b class="in">b</b>t</span><span>"דאוט"</span></li>
+          <li><span class="en" dir="ltr"><b class="in">h</b>onest</span><span>"אונסט"</span></li>
+        </ul></div></div>
+    </div></details>
+
+    <h2 class="center">יאללה לעבודה! 💪</h2>
+    <div class="seg" role="tablist">
+      <button role="tab" data-act="tab" data-tab="learn" class="${tab === 'learn' ? 'on' : ''}">📖 למידה</button>
+      <button role="tab" data-act="tab" data-tab="practice" class="${tab === 'practice' ? 'on' : ''}">🎯 תרגול</button>
+    </div>
+
+    <div class="panel" id="p-learn" ${tab === 'learn' ? '' : 'hidden'}>
+      <p class="muted center">בחרו נושא ולמדו עם כרטיסים.<br>בכל כרטיס: מנחשים, הופכים, בודקים.</p>
+      <div class="grid">${tiles}</div>
+    </div>
+
+    <div class="panel" id="p-practice" ${tab === 'practice' ? '' : 'hidden'}>
+      <section class="hero center">
+        <div style="font-size:56px">🎯</div>
+        <h1>תרגול מהיר</h1>
+        <p>10 שאלות. רואים מילה באנגלית ובוחרים את התרגום הנכון מתוך 4 תשובות.</p>
+        <p class="muted">מילים שעוד לא ידעתם יופיעו קודם.</p>
+        <button class="big" data-act="quiz">▶ התחל תרגול</button>
+      </section>
+    </div>
+    <button class="ghost" data-act="reset">איפוס התקדמות</button>
+  `);
+}
+
+function startRound(gid){
+  const pool = groupWords(gid);
+  let list = pool.filter(w => !known.has(w[1])), review = false;
+  if (!list.length){ list = shuffle(pool.slice()); review = true; }
+  const queue = list.slice(0, ROUND);
+  S = {gid, queue, total: queue.length, done: 0, again: 0, shown: false, review, started: false};
+  intro();
+}
+
+function intro(){
+  const g = G[S.gid];
+  const chips = S.queue.map(w => `<span>${en(w[1])}</span>`).join('');
+  render(`
+    <div class="topbar"><button class="icon" data-act="home" aria-label="חזרה">✕</button><span class="gname">${g.emoji} ${esc(g.name)}</span></div>
+    <section class="hero center" style="border-top:8px solid ${g.color}">
+      <div style="font-size:56px">${g.emoji}</div>
+      <h1>${esc(g.name)}</h1>
+      ${S.review ? '<p class="muted">כבר ידעתם את כולן. זה סבב חזרה 💪</p>' : ''}
+      <div class="tipbox"><div class="tl">💡 טיפ לנושא</div>${lines(g.tip)}</div>
+      <p class="muted">${S.total} כרטיסים בסבב הזה:</p>
+      <div class="chips">${chips}</div>
+      <button class="big" data-act="begin">יאללה, מתחילים!</button>
+    </section>`);
+}
+
+function card(){
+  const w = S.queue[0], g = G[S.gid];
+  const dots = Array.from({length: S.total}, (_, i) => `<i class="${i < S.done ? 'on' : ''}"></i>`).join('');
+  const face = !S.shown ? `
+      <div class="emo">${w[2]}</div>
+      <div class="big-en">${en(w[1])}</div>
+      <button class="speak" data-act="speak" data-t="${esc(speakable(w[1]))}">🔊 השמע</button>
+      <p class="hint">מה זה אומר? נסו לנחש 🤔<br>ואז הקישו על הכרטיס 👆</p>`
+    : `
+      <div class="med-en">${w[2]} ${en(w[1])} <button class="speak" data-act="speak" data-t="${esc(speakable(w[1]))}" aria-label="השמע">🔊</button></div>
+      <div class="he">${bidi(w[3])}</div>
+      <div class="tipbox"><div class="tl">🧠 טריק זכירה</div>${lines(w[5])}</div>
+      <div class="ex" style="color:var(--text)"><span class="en" dir="ltr">${hl(w[4])}</span><button class="speak" data-act="speak" data-t="${esc(speakable(w[4]))}" aria-label="השמע משפט">🔊</button></div>`;
+  render(`
+    <div class="topbar" style="--c:${g.color}">
+      <button class="icon" data-act="home" aria-label="חזרה">✕</button>
+      <div class="dots">${dots}</div>
+      <span class="gname">${g.emoji}</span>
+    </div>
+    <article class="card" data-act="flip" style="--c:${g.color}" tabindex="0">${face}</article>
+    <div class="actions">
+      <button class="again" data-act="again" ${S.shown ? '' : 'disabled'}>🔁 עוד פעם</button>
+      <button class="knew" data-act="knew" ${S.shown ? '' : 'disabled'}>✅ ידעתי</button>
+    </div>`);
+}
+
+function roundEnd(){
+  const g = G[S.gid], left = unknownIn(S.gid).length;
+  const stars = S.again === 0 ? 3 : S.again <= 2 ? 2 : 1;
+  const msg = ['', 'סבב טוב! חוזרים על הקשות עוד פעם 💪', 'יפה מאוד! 👏', 'מושלם! בלי טעויות 🏆'][stars];
+  confetti();
+  render(`
+    <section class="hero center" style="border-top:8px solid ${g.color}">
+      <div class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3 - stars)}</div>
+      <h1>סיימת סבב!</h1>
+      <p>${msg}</p>
+      <p class="muted">${S.again ? `ביקשת "עוד פעם" ${S.again} פעמים — זה לגמרי בסדר.` : ''}</p>
+      <div id="brk"><button class="big alt" data-act="break">☕ הפסקה של דקה</button></div>
+      ${left > 0
+        ? `<button class="big" data-act="group" data-id="${S.gid}">▶ עוד סבב (נשארו ${left})</button>`
+        : `<div class="tipbox" style="margin-top:12px">🏆 סיימת את הנושא "${esc(g.name)}"!</div>`}
+      <button class="big alt" data-act="home">🏠 לתפריט</button>
+    </section>`);
+}
+
+function startBreak(){
+  let t = 60;
+  const box = document.getElementById('brk');
+  const tips = ['קום ומתח את הגוף 🙆','שתה כוס מים 💧','הסתכל מהחלון רחוק 🌳','נשום עמוק 5 פעמים 😮‍💨'];
+  const draw = () => { box.innerHTML = `<div class="timer">${t}</div><p class="muted">${tips[Math.floor((60 - t) / 15) % tips.length]}</p>`; };
+  draw();
+  breakTimer = setInterval(() => {
+    t--;
+    if (t <= 0){ clearInterval(breakTimer); breakTimer = null; box.innerHTML = '<p><b>חזרנו! 💪</b></p>'; }
+    else draw();
+  }, 1000);
+}
+
+/* ---------- QUIZ ---------- */
+function startQuiz(){
+  const unk = shuffle(W.filter(w => !known.has(w[1])));
+  const rest = shuffle(W.filter(w => known.has(w[1])));
+  const items = unk.concat(rest).slice(0, 10);
+  Q = {items: shuffle(items), i: 0, score: 0, answered: false, opts: [], wrong: []};
+  quizQ();
+}
+function quizQ(){
+  const w = Q.items[Q.i];
+  if (!Q.opts.length){
+    const others = shuffle(W.filter(x => x[3] !== w[3]));
+    const seen = new Set([w[3]]), picks = [w];
+    for (const o of others){ if (!seen.has(o[3])){ seen.add(o[3]); picks.push(o); } if (picks.length === 4) break; }
+    Q.opts = shuffle(picks);
+  }
+  const opts = Q.opts.map((o, i) => `<button class="opt" data-act="opt" data-i="${i}">${bidi(o[3])}</button>`).join('');
+  render(`
+    <div class="topbar"><button class="icon" data-act="home" aria-label="חזרה">✕</button>
+      <div class="dots" style="flex:1"><small>שאלה ${Q.i + 1} מתוך ${Q.items.length} · ניקוד ${Q.score}</small></div></div>
+    <section class="q">
+      <div style="font-size:56px">${w[2]}</div>
+      <div class="big-en" style="font-size:38px;font-weight:800">${en(w[1])}</div>
+      <button class="speak" data-act="speak" data-t="${esc(speakable(w[1]))}">🔊 השמע</button>
+      <p class="muted">מה המשמעות?</p>
+      <div class="opts">${opts}</div>
+      <div class="fb" id="fb"></div>
+    </section>`);
+}
+function answer(i){
+  if (Q.answered) return;
+  Q.answered = true;
+  const w = Q.items[Q.i], chosen = Q.opts[i], ok = chosen === w;
+  const btns = view.querySelectorAll('.opt');
+  Q.opts.forEach((o, k) => { if (o === w) btns[k].classList.add('right'); });
+  if (!ok) btns[i].classList.add('wrong');
+  if (ok){ Q.score++; known.add(w[1]); } else { known.delete(w[1]); Q.wrong.push(w); }
+  saveKnown();
+  const last = Q.i === Q.items.length - 1;
+  document.getElementById('fb').innerHTML = `
+    <div class="tipbox"><div class="tl">${ok ? '🎉 נכון!' : '🤏 כמעט.'} ${bidi(w[3])}</div><div class="tl">🧠 טריק זכירה</div>${lines(w[5])}</div>
+    <button class="big" data-act="qnext">${last ? 'לתוצאות' : 'הבאה ←'}</button>`;
+}
+function quizEnd(){
+  const n = Q.items.length, pct = Q.score / n;
+  if (pct >= .7) confetti();
+  const wrongs = Q.wrong.map(w => `<span>${en(w[1])} = ${bidi(w[3])}</span>`).join('');
+  render(`
+    <section class="hero center">
+      <div class="stars">${pct >= .9 ? '🏆' : pct >= .7 ? '⭐⭐' : '⭐'}</div>
+      <h1>${Q.score} מתוך ${n}</h1>
+      <p>${pct >= .9 ? 'וואו, אלוף/ה! 🏆' : pct >= .7 ? 'כל הכבוד! 👏' : 'התחלה טובה. עוד סבב כרטיסים והציון יעלה 💪'}</p>
+      ${wrongs ? `<p class="muted">מילים לחזרה:</p><div class="chips">${wrongs}</div>` : ''}
+      <button class="big" data-act="quiz">🎮 משחק נוסף</button>
+      <button class="big alt" data-act="home">🏠 לתפריט</button>
+    </section>`);
+}
+
+/* ---------- ACTIONS ---------- */
+const act = {
+  home,
+  auto(){ const g = GROUPS.find(g => unknownIn(g.id).length) || GROUPS[0]; startRound(g.id); },
+  group(d){ tab = 'learn'; startRound(d.id); },
+  tab(d){
+    tab = d.tab;
+    view.querySelectorAll('.seg button').forEach(b => b.classList.toggle('on', b.dataset.tab === tab));
+    view.querySelector('#p-learn').hidden = tab !== 'learn';
+    view.querySelector('#p-practice').hidden = tab !== 'practice';
+  },
+  begin(){ S.shown = false; card(); },
+  flip(){ if (!S.shown){ S.shown = true; card(); } },
+  knew(){
+    if (!S.shown) return;
+    const w = S.queue.shift(); known.add(w[1]); saveKnown();
+    S.done++; S.shown = false;
+    S.queue.length ? card() : roundEnd();
+  },
+  again(){
+    if (!S.shown) return;
+    const w = S.queue.shift(); known.delete(w[1]); saveKnown();
+    S.again++; S.shown = false;
+    S.queue.splice(Math.min(2, S.queue.length), 0, w);
+    card();
+  },
+  speak(d){ speak(d.t); },
+  break: startBreak,
+  quiz(){ tab = 'practice'; startQuiz(); },
+  opt(d){ answer(+d.i); },
+  qnext(){ Q.i++; Q.answered = false; Q.opts = []; Q.i >= Q.items.length ? quizEnd() : quizQ(); },
+  reset(){ if (confirm('למחוק את כל ההתקדמות ולהתחיל מחדש?')){ known = new Set(); saveKnown(); home(); } }
+};
+view.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]');
+  if (!b || b.disabled) return;
+  const fn = act[b.dataset.act];
+  if (fn) fn(b.dataset);
+});
+view.addEventListener('keydown', e => {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.card')){ e.preventDefault(); act.flip(); }
+});
+
+home();
+</script>
+</body>
+</html>
